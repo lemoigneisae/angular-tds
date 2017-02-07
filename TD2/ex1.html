@@ -1,0 +1,98 @@
+</meta>
+</!DOCTYPE html>
+<html>
+<head>
+    <title>Choix multiples</title>
+
+    <meta charset="UTF-8">
+
+
+
+    <link rel="icon" type="image/png" href="https://docs.angularjs.org/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/styles.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/css.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/prism.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script async="" type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+
+    <script type="text/javascript" src="http://angular.kobject.net/js/lib/jquery-ui.min.js"></script>
+
+    <script src="ChoixApp.js"></script>
+    <script src="ChoixController.js"></script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body ng-app="ex1" class="ng-scope">
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="../home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+            <li class="ng-binding">Ex.1</li>
+        </ol>
+    </div>
+
+    <div class="container" data-ng-controller="ChoixController as chctl" >
+        <div class="toggle">
+            <form style="" id="choixMultiples">
+                <div class="" style="" data-ng-show="chctl.step == 1">
+                    <h1>Sélectionnez vos produits</h1>
+                    <div class="form-group">
+                        <div class="inline-block">
+                            <label>Produits disponibles :
+                                <select title="Double-cliquez pour ajouter" class="form-control ng-pristine ng-untouched ng-valid" ng-model="chctl.selectedDispoItems" ng-dblclick="chctl.selectItem()" ng-options="item.title for item in chctl.dispoItems" size="8" multiple="multiple">
+                                </select>
+                            </label>
+                            <div>
+                                <ng-pluralize count="chctl.includedItems.length" when="{0:'Aucun produit inclu',
+										1:'1 produit inclus',
+										'other':'{} produits inclus'}"></ng-pluralize>
+                            </div>
+                        </div>
+                        <div class="inline-block">
+                            <div title="Ajouter" class="btn btn-primary list-btn" ng-click="chctl.addToIncluded()" ng-disabled="chctl.selectedDispoItems.length<1" disabled="disabled"><span aria-hidden="true" class="glyphicon glyphicon-step-forward"></span></div>
+                            <div title="Ajouter tous" class="btn btn-primary list-btn" ng-click="chctl.addAllToIncluded()" ng-disabled="chctl.dispoItems.length<1"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></div>
+                            <div title="Retirer" class="btn btn-primary list-btn" ng-click="chctl.removeFromIncluded()" ng-disabled="chctl.selectedIncludedItems.length<1" disabled="disabled"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></div>
+                            <div title="Retirer tous" class="btn btn-primary list-btn" ng-click="chctl.removeAllFromIncluded()" ng-disabled="chctl.includedItems.length<1" disabled="disabled"><span aria-hidden="true" class="glyphicon glyphicon-fast-backward"></span></div>
+                        </div>
+                        <div class="inline-block">
+                            <label>Produits à inclure : <select title="Double-cliquez pour ajouter" class="form-control ng-pristine ng-untouched ng-valid" ng-model="chctl.selectedIncludedItems" ng-dblclick="chctl.deselectItem()" ng-options="item.title for item in chctl.includedItems" size="10" multiple="multiple"></select>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="btn btn-primary" style="width:98%;text-align: right" ng-click="chctl.step=2" ng-disabled="chctl.includedItems.length<1" disabled="disabled">
+                            <span>Etape suivante</span>
+                            <span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+            <div ng-show="chctl.step==2" class="ng-hide">
+                <h1>Votre choix</h1>
+                <ul>
+                    <!-- ngRepeat: item in includedItems -->
+                    <li ng-repeat="item in chctl.includedItems" class="ng-scope">
+                        <a href="{{item.url}}"><img ng-src="{{item.image}}" src="{{item.image}}"></a>
+                        <p class="ng-binding">{{item.title}}</p>
+                    </li>
+                </ul>
+                <div><div class="btn btn-primary" style="width:98%;text-align: right;margin-top:5px" ng-click="chctl.step=1">
+                    <span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <span>     Retour au choix précédent</span>
+                </div></div>
+            </div>
+        </form></div>
+        </div>
+
+
+
+</body></html>
