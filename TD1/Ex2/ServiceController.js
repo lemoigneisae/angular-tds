@@ -2,7 +2,9 @@
  * Created by isaelemoigne on 31/01/2017.
  */
 var myApp = angular.module('ex2');
-
+/**
+ * Created by isaelemoigne on 31/01/2017.
+ */
 myApp.controller('ControlApp', function($http){
     var self = this;
     this.count = 1;
