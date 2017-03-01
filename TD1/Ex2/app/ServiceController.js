@@ -2,9 +2,7 @@
  * Created by isaelemoigne on 31/01/2017.
  */
 var myApp = angular.module('ex2');
-/**
- * Created by isaelemoigne on 31/01/2017.
- */
+
 myApp.controller('ControlApp', function($http){
     var self = this;
     this.count = 1;
@@ -51,7 +49,7 @@ myApp.controller('ControlApp', function($http){
     }
 
     this.promoExiste = function(){
-        $http.get("promo.json").then(function(response) {
+        $http.get("./app/data/promo.json").then(function(response) {
             self.remise = 0;
             self.totalAvecRemise = 0;
             self.promoError = true;
