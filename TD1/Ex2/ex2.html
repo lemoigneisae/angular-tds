@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html data-ng-app="mainApp" class="ng-scope"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="UTF-8">
+    <title>Ex.2</title>
+
+    <link rel="icon" type="image/png" href="https://docs.angularjs.org/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/styles.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/css.css">
+    <link rel="stylesheet" href="http://angular.kobject.net/css/prism.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script async="" type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.min.js"></script>
+
+    <script type="text/javascript" src="http://angular.kobject.net/js/lib/jquery-ui.min.js"></script>
+    <script async="" type="text/javascript" src="http://angular.kobject.net/js/lib/fr.js"></script>
+    <script src="http://angular.kobject.net/js/bundle.js"></script>
+    <script async="" src="http://angular.kobject.net/js/lib/prism.js"></script>
+    <script async="" src="http://angular.kobject.net/js/lib/jszip.min.js"></script>
+
+    <script src="app/ServiceApp.js"></script>
+    <script src="app/ServiceController.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body ng-app="ex2" data-ng-controller="ControlApp as ctlapp" class="ng-scope">
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="../../home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+        <li class="ng-binding">Ex.2</li>
+    </ol>
+</div>
+
+
+<div class="container">
+
+    <!-- ngView:  --><div ng-view="" class="toggle ng-scope"><form id="services" class="ng-pristine ng-valid ng-scope">
+    <h1>Services</h1>
+    <div class="alert alert-info">
+        <span>Choisissez les éléments à inclure</span>
+        <p>
+            <ng-pluralize count="ctlapp.count" when="{0:'Aucun service sélectionné',
+											1:'1 service sélectionné',
+											'other':'{} services sélectionnés'}">
+
+            </ng-pluralize>
+        </p>
+    </div>
+    <ul>
+        <!-- ngRepeat: service in services -->
+        <li ng-repeat="service in ctlapp.services" ng-click="ctlapp.toggleActive(service)" ng-class="{active:service.active==true}" class="ng-binding ng-scope">
+        {{service.name}}<span class="ng-binding">{{service.price | currency}}</span>
+        </li>
+        <!-- end ngRepeat: service in services -->
+    </ul>
+
+    <div class="total">
+        <!-- Format en currency. -->
+        Total: <span class="ng-binding">{{ctlapp.letotal | currency}}</span>
+    </div>
+    <div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                <input type="checkbox" aria-label="..." data-ng-model="ctlapp.ckPromo">
+            </span>
+            <input type="text" class="form-control" data-ng-change="ctlapp.promoExiste()" data-ng-model="ctlapp.codePromo" placeholder="Code promo">
+        </div>
+    </div>
+    <div class="total ng-hide" ng-show="ctlapp.ckPromo &amp;&amp; ctlapp.codePromo">
+        Remise :
+        <span ng-show="!ctlapp.promoError">{{ctlapp.remise | currency}}</span><span ng-show="ctlapp.promoError">Code promo invalide</span><br>
+        Total avec remise :
+        <span>{{ctlapp.totalAvecRemise | currency}}</span>
+    </div>
+</form></div>
+</div>
+</body></html>

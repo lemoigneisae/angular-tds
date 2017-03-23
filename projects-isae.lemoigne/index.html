@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="appli">
+<html data-ng-cloak>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <base href="/angular-tds/projects-isae.lemoigne/"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/config.js"></script>
+
+    <script type="text/javascript" src="app/controllers/myProjects.js"></script>
+    <script type="text/javascript" src="app/controllers/project.js"></script>
+    <script type="text/javascript" src="app/controllers/story.js"></script>
+</head>
+<body>
+
+    <a href="home">Home</a><br/>
+    <a href="project/1">Project</a><br/>
+    <a href="story/1">Story</a><br/>
+    <div ng-view></div>
+    <div ng-bind="myProjectsController.content1"></div>
+    <div ng-bind="projectsController.content2"></div>
+    <div ng-bind="storyController.content3"></div>
+
+</body>
+</html>

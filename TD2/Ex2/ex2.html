@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex. 2</title>
+
+    <link rel="icon" type="image/png" href="https://docs.angularjs.org/favicon.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/css.css">
+    <link rel="stylesheet" href="../../css/prism.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script async="" type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.min.js"></script>
+
+    <script src="app/ContactApp.js"></script>
+    <script src="app/ContactController.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body ng-app="ex2" data-ng-controller="ContactController as ctCtrl">
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="../../home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+            <li class="ng-binding">Ex.2</li>
+        </ol>
+    </div>
+
+
+    <div ng-view="" class="toggle ng-scope" style=""><div id="contact" class="ng-scope">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Contacts</div>
+            <div class="panel-body">
+                <input type="text" placeholder="Filtrer..." data-ng-model="mot" class="form-control ng-pristine ng-untouched ng-valid">
+                <table class="table table-striped" id="lstContact">
+                    <tbody>
+                    <tr contact-elem="" class="animate-repeat ng-scope" data-ng-repeat="contact in ctCtrl.contact | Filtre | filter:mot as resultat">
+
+                    <tr><td colspan="4">
+                        <a id="ajout1" href="" data-ng-click="ctCtrl.Ajoute()" class="btn btn-primary">Ajouter...</a>
+                        <a id="ajout2" href="" data-ng-show="ctCtrl.resultat.length>0 &amp;&amp; !mot" data-ng-click="ctCtrl.Annuler()" class="btn btn-danger ng-hide">
+                            <data-ng-pluralize count="ctCtrl.resultat.length" when="{'one': 'Annuler la suppression.',
+                         'other': 'Annuler les suppressions ({}) .'}"></data-ng-pluralize>
+                        </a></td></tr>
+                    </tbody></table>
+            </div>
+            <frm-contact-elem>
+            </frm-contact-elem>
+
+            <div class="container"><data-ng-pluralize count="ctCtrl.contact.length" when="{'0': 'Aucun résultat.',
+                         'one': '1 contact trouvé.',
+                         'other': '{} contacts trouvés.'}"></data-ng-pluralize>
+            </div>
+        </div>
+    </div></div>
+</body>
+</html>

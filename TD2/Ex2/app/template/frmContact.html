@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<fieldset data-ng-show="ctCtrl.modif" class="container form-group form-inline">
+    <legend class="ng-binding">Ajouter un contact</legend>
+    <form name="frmContact" data-ng-submit="" novalidate="" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+        <input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" type="text" data-ng-model="ctCtrl.unContact.nom" placeholder="Entrez un nom..." required="">
+        <input class="form-control ng-pristine ng-untouched ng-valid" type="text" data-ng-model="ctCtrl.unContact.prenom" placeholder="Prénom...">
+        <input class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" type="email" data-ng-model="ctCtrl.unContact.mail" placeholder="Adresse email..." required="">
+        <input type="submit" value="Valider" data-ng-click="ctCtrl.Ajouter(frmContact.$valid)" class="btn btn-primary">
+        <input type="button" value="Annuler" data-ng-click="ctCtrl.Ajoute();ctCtrl.modif=false" class="btn btn-primary">
+    </form>
+</fieldset>

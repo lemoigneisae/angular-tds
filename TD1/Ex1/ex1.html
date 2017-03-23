@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex.1</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="app/NoteApp.js"></script>
+    <script src="app/NoteController.js"></script>
+
+</head>
+
+<body ng-app="ex1" data-ng-controller="ControlApp as ctlapp">
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="../../home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+        <li class="ng-binding">Ex.1</li>
+    </ol>
+</div>
+
+
+<div class="container">
+
+    <!-- ngView:  --><div ng-view="" class="toggle ng-scope" style=""><div id="note" class="ng-scope">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Ex 1 : Note Application</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <p><label for="message">Note :</label>
+                    <textarea data-ng-change="ctlapp.count()" name="message" id="message" data-ng-model="ctlapp.message" cols="40" rows="5" class="form-control ng-valid ng-valid-maxlength ng-dirty ng-valid-parse ng-touched" maxlength="100" style=""></textarea>
+                </p>
+                <p>
+                    <button data-ng_click="ctlapp.save()" class="btn btn-primary">Enregistrer</button>
+                    <button data-ng-click="ctlapp.clear()" class="btn btn-primary">Effacer</button>
+                </p>
+
+                <div class="alert alert-info alert-dismissible" role="alert">Nombre de caractères restant : <span class="ng-binding">{{ctlapp.nb}}</span></div>
+
+                <div ng-show="ctlapp.info"
+                     ng-class="{
+                            'alert-info':ctlapp.message=='',
+                            'alert-warning':ctlapp.message!='' &amp;&amp; ctlapp.info!='Note sauvegardée',
+                            'alert-danger':ctlapp.nb<10 &amp;&amp; ctlapp.info!='Note sauvegardée',
+                            'alert-success' :ctlapp.info=='Note sauvegardée'
+                      }"
+                     class="alert alert-dismissible alert-info" role="alert" data-ng-show="info" style="">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="info=''">
+                        <span aria-hidden="true">×</span></button>
+                    <span class="ng-binding" ng-bind="ctlapp.info">{{ctlapp.info}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+</div>
+
+</body>
+</html>
